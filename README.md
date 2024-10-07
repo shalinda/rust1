@@ -1,3 +1,22 @@
+This code uses the `actix-web` crate for building the web server and the `rocksdb` crate for interacting with RocksDB:
+
+## Here's how the code works:
+
+1. The `Employee` struct represents the data model for an employee, with fields for `id`, `name`, and `salary`.
+2. The `get_db` function returns an instance of `DB` from the `rocksdb` crate, which is used to interact with the RocksDB database.
+3. The `store_employee` function is a route handler that takes a JSON payload representing an `Employee` object, serializes it, and stores it in RocksDB using the employee's `id` as the key.
+4. The `get_employee` function is a route handler that takes an `id` as a path parameter, retrieves the corresponding employee data from RocksDB, deserializes it, and returns it as a JSON response. If the employee is not found, it returns a 404 Not Found response.
+5. In the `main` function, we set up the Actix Web server and define the routes for storing and retrieving employees.
+
+To use this API, you can make HTTP requests to the following endpoints:
+
+- `POST /employee` with a JSON payload representing the employee data to store a new employee.
+- `GET /employee/{id}` to retrieve an employee by their ID.
+
+You can use tools like `curl` or a dedicated API testing tool like Postman to interact with the API.
+
+Note that this is a basic example, and you may want to add additional features like error handling, input validation, and authentication/authorization as per your requirements.
+
 To compile the above Rust code, follow these steps:
 
 1. Make sure you have Rust installed on your system. You can download and install it from the official Rust website: https://www.rust-lang.org/tools/install
